@@ -37,7 +37,7 @@ class SubtreeHashingMachine:
 
     def hashing_tool(self, scores, feature):
         """
-        Given a graph representation and a feature update the representation with the hash of the feature:
+        Given a graph representation and a structural feature update the representation with the hash of the feature:
         :param scores: Repesentation.
         :param feature: Structural feature string.
         :return scores: Updated representation.
@@ -83,7 +83,6 @@ class SubtreeHashingMachine:
         for iteration in range(self.args.wl_iterations):
             self.features = self.do_a_recursion()
 
-
 def dataset_reader(path):
     """
     Function to read the graph and features from a json file.
@@ -108,18 +107,22 @@ def hash_wrap(path, args):
     """
     Function to extract WL features from a graph.
     :param path: The path to the graph json.
-    :param rounds: Number of WL iterations.
-    :return doc: Document collection object.
+    :param args: Arguments object.
+    return 
     """
     graph, features, name = dataset_reader(path)
     machine = SubtreeHashingMachine(graph, features, args)
-    return [name] + machine.scores
+    representation = [name] + machine.scores
+    return representation
        
 class DistributedHashingMachine:
     """
+    Class for parallel nested subtree hashing.
     """
     def __init__(self, args):
         """
+        Setting up the model for hashing.
+        :param args: Nested subtree hashing arguments. 
         """
         self.args = args
         self.graphs = glob.glob(args.input_path + "*.json")
@@ -130,15 +133,12 @@ class DistributedHashingMachine:
         """
         self.hashes = Parallel(n_jobs = self.args.workers)(delayed(hash_wrap)(g, self.args) for g in tqdm(self.graphs))
 
-
     def save_embedding(self):
         """
         Function to save the embedding.
         """
         self.feature_count = self.args.dimensions*(self.args.wl_iterations+1)
         self.column_names = ["name"] + map(lambda x: "x_" +str(x), range(0,self.feature_count))
-
         self.hashes = pd.DataFrame(self.hashes, columns = self.column_names)
         self.hashes = self.hashes.sort_values(["name"])
         self.hashes.to_csv(self.args.output_path, index = None)
-
