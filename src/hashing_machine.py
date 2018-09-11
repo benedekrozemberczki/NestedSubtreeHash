@@ -51,9 +51,9 @@ class SubtreeHashingMachine:
         scores[index] = scores[index] + sign
         return scores, index_hash_value
 
-
     def create_base_features(self):
         """
+        Hashing the raw node features of the graph to a vector.
         """
         scores = [0.0]*self.args.dimensions
         for feature in self.features:
