@@ -17,23 +17,31 @@ class SubtreeHashingMachine:
         :param features: Feature hash table.
         :param iterations: Number of WL iterations.
         """
-        self.args = args
         self.graph = graph
         self.features = features
+        self.args = args
         self.create_base_features()
         self.do_recursions()
 
     def single_hash(self, feature):
         """
+        Hashing a feature and creating a numeric digest in 16 bits.
+        :param feature: Node feature.
+        :return hash_value: Hash of the features.
+        :return number: Numeric value of the hash.
         """
         hash_object = hashlib.md5(feature.encode())
         hash_value = hash_object.hexdigest()
         number = int(hash_value,16)
         return number, hash_value
 
-
     def hashing_tool(self, scores, feature):
         """
+        Given a graph representation and a feature update the representation with the hash of the feature:
+        :param scores: Repesentation.
+        :param feature: Structural feature string.
+        :return scores: Updated representation.
+        :return index_hash_value:
         """
         feature = str(feature)
         index_number, index_hash_value = self.single_hash(feature)
