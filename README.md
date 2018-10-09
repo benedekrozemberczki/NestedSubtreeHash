@@ -36,14 +36,14 @@ Learning of the embedding is handled by the `src/main.py` script which provides 
 #### Input and output options
 
 ```
-  --input-path STR                Input folder.                                     Default is `dataset/`.
-  --output-path STR               Embeddings path.                                  Default is `features/nci1.csv`.
+  --input-path      STR     Input folder.         Default is `dataset/`.
+  --output-path     STR     Embeddings path.      Default is `features/nci1.csv`.
 ```
 #### Model options
 ```
-  --dimensions INT                Number of dimensions.                             Default is 16.
-  --workers INT                   Number of workers.                                Default is 4.
-  --wl-iterations INT             Number of feature extraction recursions.          Default is 2.
+  --dimensions      INT     Number of dimensions.                          Default is 16.
+  --workers         INT     Number of workers.                             Default is 4.
+  --wl-iterations   INT     Number of feature extraction recursions.       Default is 2.
 ```
 
 ### Examples
