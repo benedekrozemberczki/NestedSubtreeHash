@@ -14,7 +14,7 @@ This repository provides an implementation for Nested Subtree Hashing as it is d
 
 ### Requirements
 
-The codebase is implemented in Python 2.7. Package versions used for development are just below.
+The codebase is implemented in Python 3.5.2 | Anaconda 4.2.0 (64-bit). Package versions used for development are just below.
 ```
 networkx          1.11
 tqdm              4.19.5
