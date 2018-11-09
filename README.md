@@ -21,7 +21,8 @@ tqdm              4.19.5
 pandas            0.23.4
 jsonschema        2.6.0
 joblib            0.13.0
-numpy             1.14.3
+numpy             1.15.4
+texttable         1.5.0
 ```
 
 ### Datasets
