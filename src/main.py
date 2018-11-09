@@ -1,4 +1,4 @@
-from helpers import parameter_parser
+from helpers import parameter_parser, tab_printer
 from hashing_machine import DistributedHashingMachine
 
 def main(args):
@@ -12,4 +12,5 @@ def main(args):
 
 if __name__ == "__main__":
     args = parameter_parser()
+    tab_printer(args)
     main(args)

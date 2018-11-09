@@ -100,7 +100,7 @@ def dataset_reader(path):
     else:
         features = nx.degree(graph)
 
-    features = {int(k):v for k,v, in features.iteritems()}
+    features = {int(k):v for k,v, in features.items()}
     return graph, features, name
 
 def hash_wrap(path, args):
@@ -138,7 +138,7 @@ class DistributedHashingMachine:
         Function to save the embedding.
         """
         self.feature_count = self.args.dimensions*(self.args.wl_iterations+1)
-        self.column_names = ["name"] + map(lambda x: "x_" +str(x), range(0,self.feature_count))
+        self.column_names = ["name"] + [str(fet) for fet in range(self.feature_count)]
         self.hashes = pd.DataFrame(self.hashes, columns = self.column_names)
         self.hashes = self.hashes.sort_values(["name"])
         self.hashes.to_csv(self.args.output_path, index = None)

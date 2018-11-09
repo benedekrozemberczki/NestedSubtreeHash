@@ -1,4 +1,5 @@
 import argparse
+from texttable import Texttable
 
 def parameter_parser():
 
@@ -37,3 +38,15 @@ def parameter_parser():
 	                help = 'Number of Weisfeiler-Lehman iterations. Default is 2.')
     
     return parser.parse_args()
+
+
+def tab_printer(args):
+    """
+    Function to print the logs in a nice tabular format.
+    :param args: Parameters used for the model.
+    """
+    args = vars(args)
+    keys = sorted(args.keys())
+    tab = Texttable() 
+    tab.add_rows([["Parameter", "Value"]] +  [[k.replace("_"," ").capitalize(),args[k]] for k in keys])
+    print(tab.draw())
