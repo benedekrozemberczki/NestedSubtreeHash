@@ -18,10 +18,9 @@ The codebase is implemented in Python 2.7. Package versions used for development
 ```
 networkx          1.11
 tqdm              4.19.5
-numpy             1.13.3
-pandas            0.20.3
+pandas            0.23.4
 jsonschema        2.6.0
-joblib            0.11
+joblib            0.13.0
 numpy             1.14.3
 ```
 
