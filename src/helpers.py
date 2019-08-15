@@ -2,15 +2,12 @@ import argparse
 from texttable import Texttable
 
 def parameter_parser():
-
     """
     A method to parse up command line parameters. By default it gives an embedding of the partial NCI1 graph dataset.
     The default hyperparameters give a good quality representation without grid search.
     Representations are sorted by ID.
     """
-
     parser = argparse.ArgumentParser(description = "Run Nested Subtree Hashing.")
-
 
     parser.add_argument('--input-path',
                         nargs = '?',
