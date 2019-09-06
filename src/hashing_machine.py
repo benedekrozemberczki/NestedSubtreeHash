@@ -99,7 +99,6 @@ def dataset_reader(path):
         features = data["features"]
     else:
         features = nx.degree(graph)
-
     features = {int(k):v for k,v, in features.items()}
     return graph, features, name
 
