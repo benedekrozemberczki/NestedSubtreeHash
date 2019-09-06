@@ -36,7 +36,6 @@ def parameter_parser():
     
     return parser.parse_args()
 
-
 def tab_printer(args):
     """
     Function to print the logs in a nice tabular format.
