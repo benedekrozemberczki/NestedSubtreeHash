@@ -1,3 +1,5 @@
+"""Running the hashing machine."""
+
 from helpers import parameter_parser, tab_printer
 from hashing_machine import DistributedHashingMachine
 

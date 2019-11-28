@@ -1,3 +1,5 @@
+"""Hashing machine to create gtraph signatures."""
+
 import glob
 import json
 import hashlib
@@ -32,12 +34,13 @@ class SubtreeHashingMachine:
         """
         hash_object = hashlib.md5(feature.encode())
         hash_value = hash_object.hexdigest()
-        number = int(hash_value,16)
+        number = int(hash_value, 16)
         return number, hash_value
 
     def hashing_tool(self, scores, feature):
         """
-        Given a graph representation and a structural feature update the representation with the hash of the feature:
+        Given a graph representation and a structural feature.
+        update the representation with the hash of the feature.
         :param scores: Repesentation.
         :param feature: Structural feature string.
         :return scores: Updated representation.
@@ -62,7 +65,8 @@ class SubtreeHashingMachine:
 
     def do_a_recursion(self):
         """
-        The method does a single WL recursion. Creates a hash vector with the features.
+        The method does a single WL recursion.
+        Creates a hash vector with the features.
         :return new_features: The hash table with extracted WL features.
         """
         new_features = {}
@@ -70,7 +74,8 @@ class SubtreeHashingMachine:
         for node in self.graph.nodes():
             nebs = self.graph.neighbors(node)
             degs = [self.features[neb] for neb in nebs]
-            feature = "_".join([str(self.features[node])]+list(set(sorted(map(lambda x: str(x),degs)))))
+            to_join = [str(self.features[node])]+sorted([str(deg) for deg in degs])
+            feature = "_".join(to_join)
             scores, hash_value = self.hashing_tool(scores, feature)
             new_features[node] = hash_value
         self.scores = self.scores + scores
@@ -80,7 +85,7 @@ class SubtreeHashingMachine:
         """
         The method does a series of WL recursions.
         """
-        for iteration in range(self.args.wl_iterations):
+        for _ in range(self.args.wl_iterations):
             self.features = self.do_a_recursion()
 
 def dataset_reader(path):
@@ -99,7 +104,7 @@ def dataset_reader(path):
         features = data["features"]
     else:
         features = nx.degree(graph)
-    features = {int(k):v for k,v, in features.items()}
+    features = {int(k):v for k, v, in features.items()}
     return graph, features, name
 
 def hash_wrap(path, args):
@@ -107,13 +112,13 @@ def hash_wrap(path, args):
     Function to extract WL features from a graph.
     :param path: The path to the graph json.
     :param args: Arguments object.
-    return 
+    return representation: Graph representation.
     """
     graph, features, name = dataset_reader(path)
     machine = SubtreeHashingMachine(graph, features, args)
     representation = [name] + machine.scores
     return representation
-       
+
 class DistributedHashingMachine:
     """
     Class for parallel nested subtree hashing.
@@ -121,7 +126,7 @@ class DistributedHashingMachine:
     def __init__(self, args):
         """
         Setting up the model for hashing.
-        :param args: Nested subtree hashing arguments. 
+        :param args: Nested subtree hashing arguments.
         """
         self.args = args
         self.graphs = glob.glob(args.input_path + "*.json")
@@ -130,7 +135,7 @@ class DistributedHashingMachine:
         """
         Function to create the representations in a parallel setup.
         """
-        self.hashes = Parallel(n_jobs = self.args.workers)(delayed(hash_wrap)(g, self.args) for g in tqdm(self.graphs))
+        self.hashes = Parallel(n_jobs=self.args.workers)(delayed(hash_wrap)(g, self.args) for g in tqdm(self.graphs))
 
     def save_embedding(self):
         """
@@ -138,6 +143,6 @@ class DistributedHashingMachine:
         """
         self.feature_count = self.args.dimensions*(self.args.wl_iterations+1)
         self.column_names = ["name"] + [str(fet) for fet in range(self.feature_count)]
-        self.hashes = pd.DataFrame(self.hashes, columns = self.column_names)
+        self.hashes = pd.DataFrame(self.hashes, columns=self.column_names)
         self.hashes = self.hashes.sort_values(["name"])
-        self.hashes.to_csv(self.args.output_path, index = None)
+        self.hashes.to_csv(self.args.output_path, index=None)
