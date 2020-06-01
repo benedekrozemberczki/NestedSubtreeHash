@@ -1,4 +1,7 @@
-# Nested Subtree Hashes ![License](https://img.shields.io/github/license/benedekrozemberczki/NestedSubtreeHash.svg?color=blue&style=plastic)
+Nested Subtree Hashes
+=========================================================
+![License](https://img.shields.io/github/license/benedekrozemberczki/NestedSubtreeHash.svg?color=blue&style=plastic) [![codebeat badge](https://codebeat.co/badges/8ba4cc57-939e-40f9-ba71-ddf6b48a13eb)](https://codebeat.co/projects/github-com-benedekrozemberczki-nestedsubtreehash-master)
+
 <p align="justify">
 Nested subtree hashing is an embedding algorithm which learns representations for a set of graphs by hashing the Weisfeiler-Lehman subtree patterns. The procedure places graphs in an abstract feature space where graphs with similar structural properties (Weisfehler-Lehman features) are clustered together. Nested subtree hashing has a linear runtime complexity in the number of graphs in the dataset which makes it extremely scalable. At the instance level creating a graph representation has a linear runtime and space complexity in the number of edges. This specific implementation supports multi-core data processing in the feature extraction and hashing phases. (So far this is the only implementation which support multi-core processing in every phase).
 </p>
