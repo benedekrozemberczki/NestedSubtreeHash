@@ -10,7 +10,7 @@ Nested subtree hashing is an embedding algorithm which learns representations fo
 </p>
 
 This repository provides an implementation for Nested Subtree Hashing as it is described in:
-> Nested Subtree Hash Kernels for Large-scale Graph Classification Over Streams
+> **Nested Subtree Hash Kernels for Large-scale Graph Classification Over Streams**
 > Bin Li, Xingquan Zhu, Lianhua Chi, Chengqi Zhang
 > IEEE 12th International Conference on Data Mining.
 
