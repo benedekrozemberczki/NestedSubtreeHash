@@ -70,3 +70,11 @@ Creating an embedding of the default dataset with 3x32 dimensions as each recurs
 ```
 python src/main.py --dimensions 32 --wl-iterations 3
 ```
+
+
+
+--------------------------------------------------------------------------------
+
+**License**
+
+- [GNU](https://github.com/benedekrozemberczki/NestedSubtreeHash/blob/master/LICENSE)
