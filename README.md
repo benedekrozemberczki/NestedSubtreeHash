@@ -1,6 +1,6 @@
 Nested Subtree Hashes
 =========================================================
-[![codebeat badge](https://codebeat.co/badges/8ba4cc57-939e-40f9-ba71-ddf6b48a13eb)](https://codebeat.co/projects/github-com-benedekrozemberczki-nestedsubtreehash-master)  [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/NestedSubtreeHash.svg)](https://github.com/benedekrozemberczki/NestedSubtreeHash/archive/master.zip)
+[![codebeat badge](https://codebeat.co/badges/8ba4cc57-939e-40f9-ba71-ddf6b48a13eb)](https://codebeat.co/projects/github-com-benedekrozemberczki-nestedsubtreehash-master)  [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/NestedSubtreeHash.svg)](https://github.com/benedekrozemberczki/NestedSubtreeHash/archive/master.zip)⠀
 
 
 <p align="justify">
