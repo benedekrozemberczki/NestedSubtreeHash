@@ -77,4 +77,4 @@ python src/main.py --dimensions 32 --wl-iterations 3
 
 - [GNU](https://github.com/benedekrozemberczki/NestedSubtreeHash/blob/master/LICENSE)
 
--------------------------------------------------
+---------------------------------------------
